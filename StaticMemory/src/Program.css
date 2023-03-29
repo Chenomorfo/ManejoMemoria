@@ -1,0 +1,66 @@
+.App {
+  display: grid;
+  grid-template-columns: 40% 155px 1fr;
+  gap: 15px;
+
+  height: 100vh;
+  width: 100%;
+}
+
+.Graph {
+  display: block;
+  margin-top: 10px;
+  height: 95%;
+  width: 100%;
+}
+.Graph i {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+}
+
+.Tabla {
+  margin-top: 15px;
+  display: block;
+}
+.Tabla div {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  width: 95%;
+  margin: auto;
+  transition: 0.3s;
+}
+.Tabla div:hover {
+  background-color: white;
+  color: #242424;
+  cursor: pointer;
+}
+
+.Tabla div i {
+  border: 1px solid white;
+  padding: 5px;
+  text-align: center;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.Controles div {
+  margin: 15px;
+}
+.Controles input {
+  font-size: 1.4rem;
+}
+.Controles button {
+  font-size: 1.4rem;
+  background-color: white;
+  color: black;
+}
+.Controles div i {
+  margin: 5px;
+}
