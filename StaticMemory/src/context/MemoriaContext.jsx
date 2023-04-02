@@ -27,6 +27,24 @@ export function MemoriaContextProvider(props) {
     setParticiones(nuevasParticiones);
   };
 
+  const ValidarTrabajo = (trabajo) =>{
+    const highestPartition = Math.max(...Particiones.map(p => p.size))
+    if(trabajo > highestPartition)
+    {
+      alert('ERROR: Trabajo demasiado grande para el disco')
+      return;
+    }
+
+    alert('Trabajo aceptado')
+  }
+
+  const ReiniciarSimulacion = ()=>{
+    setParticiones([])
+    setDisco(0)
+    setOS(0)
+    
+  }
+
   return (
     <MemoriaContext.Provider
       value={{
@@ -37,6 +55,8 @@ export function MemoriaContextProvider(props) {
         Particiones,
         setParticiones,
         CrearParticion,
+        ValidarTrabajo,
+        ReiniciarSimulacion
       }}
     >
       {props.children}

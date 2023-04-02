@@ -15,7 +15,7 @@ function Data() {
 
   const CargarInformacion = () => {
     let Data = [];
-    for (let index = 0; index < Particiones.length; index++) {
+    for (let index = 1; index < Particiones.length; index++) {
       Data.push(
         <div>
           <i>{Particiones[index].label}</i>
