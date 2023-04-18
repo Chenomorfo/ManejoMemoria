@@ -19,31 +19,56 @@ export function MemoriaContextProvider(props) {
     }
   }
 
-  const CrearParticion = (label, size) => {
-    if (Particiones[0]) if (Particiones[0].label === label) return;
 
+  /* Funciones */
+  const CrearParticion = (label, size) => {
+    if (Particiones[0])
+      if (Particiones[0].label === label) {
+        alert("Ya existe un sistema operativo");
+        return;
+      }
+
+    let actualSize = 0;
+
+    for (let i = 0; i < Particiones.length; i++) {
+      actualSize += Particiones[i].size;
+    }
+    if (Disco - actualSize - size < 0) {
+      alert("ERROR: Ya no hay espacio para asignar esta particion");
+      return;
+    }
     let nuevasParticiones = [...Particiones, new Partition(label, size)];
-    
+
     setParticiones(nuevasParticiones);
   };
 
-  const ValidarTrabajo = (trabajo) =>{
-    const highestPartition = Math.max(...Particiones.map(p => p.size))
-    if(trabajo > highestPartition)
-    {
-      alert('ERROR: Trabajo demasiado grande para el disco')
+  const ValidarTrabajo = (trabajo) => {
+    const highestPartition = Math.max(...Particiones.map((p) => p.size));
+    if (trabajo > highestPartition) {
+      alert("ERROR: Trabajo demasiado grande para el disco");
       return;
     }
+    let modifiedPartiions = [...Particiones];
+    for (let i = 1; i < modifiedPartiions.length; i++) {
+      if (
+        modifiedPartiions[i].avaible &&
+        trabajo <= modifiedPartiions[i].size
+      ) {
+        modifiedPartiions[i].avaible = false;
+        modifiedPartiions[i].work = trabajo;
+        modifiedPartiions[i].garbage = modifiedPartiions[i].size - trabajo;
+        alert("Trabajo aceptado");
+        break;
+      }
+    }
+    setParticiones(modifiedPartiions);
+  };
 
-    alert('Trabajo aceptado')
-  }
-
-  const ReiniciarSimulacion = ()=>{
-    setParticiones([])
-    setDisco(0)
-    setOS(0)
-    
-  }
+  const ReiniciarSimulacion = () => {
+    setParticiones([]);
+    setDisco(0);
+    setOS(0);
+  };
 
   return (
     <MemoriaContext.Provider
@@ -56,7 +81,7 @@ export function MemoriaContextProvider(props) {
         setParticiones,
         CrearParticion,
         ValidarTrabajo,
-        ReiniciarSimulacion
+        ReiniciarSimulacion,
       }}
     >
       {props.children}

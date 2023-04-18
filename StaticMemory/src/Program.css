@@ -19,7 +19,7 @@
   text-align: center;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  border: 1px solid white;
 }
 
 .Tabla {
@@ -34,13 +34,13 @@
   transition: 0.3s;
 }
 .Tabla div:hover {
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   cursor: pointer;
 }
 
 .Tabla div i {
-  border: 1px solid black;
+  border: 1px solid white;
   padding: 5px;
   text-align: center;
   height: 50px;
@@ -63,8 +63,8 @@
 }
 .Controles button {
   font-size: 1.4rem;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
 }
 .Controles div i {
   margin: 5px;

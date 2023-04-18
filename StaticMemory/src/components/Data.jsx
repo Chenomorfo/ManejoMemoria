@@ -17,7 +17,7 @@ function Data() {
     let Data = [];
     for (let index = 1; index < Particiones.length; index++) {
       Data.push(
-        <div>
+        <div key={Particiones[index].label}>
           <i>{Particiones[index].label}</i>
           <i>{Particiones[index].size} MB</i>
           <i>{CalcularInicio(index)}</i>
@@ -31,7 +31,7 @@ function Data() {
   };
 
   return (
-    <div class="Tabla">
+    <div className="Tabla">
       <div>
         <i>Numero</i>
         <i>Tamaño</i>

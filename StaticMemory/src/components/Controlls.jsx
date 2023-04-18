@@ -7,8 +7,14 @@ function Controlls() {
   const [ValorParticion, setValorParticion] = useState(0);
   const [valorTrabajo, setValorTrabajo] = useState(0);
 
-  const { setDisco, Disco, CrearParticion, Particiones, ValidarTrabajo, ReiniciarSimulacion } =
-    useContext(MemoriaContext);
+  const {
+    setDisco,
+    Disco,
+    CrearParticion,
+    Particiones,
+    ValidarTrabajo,
+    ReiniciarSimulacion,
+  } = useContext(MemoriaContext);
 
   const CalculateSize = () => {
     let size = 0;
@@ -30,7 +36,7 @@ function Controlls() {
         />
         <button
           onClick={() => {
-            setDisco(parseInt(ValorDisco));
+            if (parseInt(ValorDisco) > 0) setDisco(parseInt(ValorDisco));
           }}
         >
           Ingresar

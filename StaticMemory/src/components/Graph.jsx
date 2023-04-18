@@ -8,7 +8,10 @@ function Graph() {
     let myPartitiones = [];
     for (let i = 0; i < Particiones.length; i++) {
       myPartitiones.push(
-        <i style={{ height: `${(Particiones[i].size * 100) / Disco}%` }}>
+        <i
+          key={Particiones[i].label}
+          style={{ height: `${(Particiones[i].size * 100) / Disco}%` }}
+        >
           {Particiones[i].label} <br />
           {Particiones[i].size} MB
         </i>
